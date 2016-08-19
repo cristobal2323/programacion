@@ -1,21 +1,25 @@
-var dibujo, lienzo;
+var dibujo, lienzo, t, b;
 
 function inicio(){
 	dibujo = document.getElementById("dibujo");
 	lienzo = dibujo.getContext("2d");
-
+	t = document.getElementById("usuario");
+	b = document.getElementById("dibujalo");
 	lienzo.beginPath();
 	lienzo.strokeStyle = "#00F";
 	lienzo.arc(150,150,100, (Math.PI * 2), false);
 	lienzo.closePath();
 	lienzo.stroke();
 
-	dibujarGrilla(lienzo);
+	b.addEventListener("click",dibujarGrilla);
+
 }
 function dibujarGrilla(pony){
+	var pony = lienzo;
+	var rayas = Number(t.value);
 	var ancho = 300 , alto = 300;
 	var lineas = 10;
-	var anchoLinea = 30;
+	var anchoLinea = ancho / rayas;
 	var limiteX = ancho / lineas;
 	var limiteY = ancho / lineas;
 	for(linea= 0; linea <= limiteX; linea++){
